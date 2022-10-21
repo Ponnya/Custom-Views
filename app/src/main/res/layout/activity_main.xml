@@ -44,5 +44,13 @@
            layout="@layout/view_pod_empty"/>
 
     </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnNavigateToModifyCustomView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/margin_medium_2"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_white_24dp"/>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

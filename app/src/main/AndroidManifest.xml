@@ -14,13 +14,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ModifyCustomViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.NewsDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

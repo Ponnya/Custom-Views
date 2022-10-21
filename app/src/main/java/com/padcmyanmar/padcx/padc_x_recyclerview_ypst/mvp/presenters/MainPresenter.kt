@@ -8,4 +8,5 @@ import com.padcmyanmar.padcx.padc_x_recyclerview_ypst.veiws.viewpods.EmptyViewPo
 interface MainPresenter : NewsItemDelegate, BasePresenter<MainView>, EmptyViewPod.Delegate {
     fun onSwipeRefresh(lifecycleOwner: LifecycleOwner)
     fun onUiReady(lifeCycleOwner: LifecycleOwner)
+    fun onTapFloatingButton()
 }

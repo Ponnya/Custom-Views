@@ -1,7 +1,7 @@
 package com.padcmyanmar.padcx.padc_x_recyclerview_ypst.activities
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcmyanmar.padcx.padc_x_recyclerview_ypst.R
 import com.padcmyanmar.padcx.padc_x_recyclerview_ypst.adapters.NewsListAdapter
@@ -30,9 +30,10 @@ class MainActivity : BaseActivity(), MainView {
 
         //   hideEmptyView()
         setUpSwipeRefresh()
-        setUpRecyclerView()
         setUpViewPod()
+        setUpRecyclerView()
         mPresenter.onUiReady(this)
+        setUpListener()
     }
 
     override fun displayNewsList(newsList: List<NewsVO>) {
@@ -43,9 +44,9 @@ class MainActivity : BaseActivity(), MainView {
         startActivity(NewsDetailActivity.newItent(this, newsId))
     }
 
-/*    override fun displayEmptyView() {
-        showEmptyView()
-    }*/
+    override fun displayEmptyView() {
+        //showEmptyView()
+    }
 
     override fun enableSwipeRefresh() {
         swipeRefreshLayout.isRefreshing = true
@@ -55,8 +56,12 @@ class MainActivity : BaseActivity(), MainView {
         swipeRefreshLayout.isRefreshing = false
     }
 
+    override fun navigateToModifyCustomView() {
+        startActivity(ModifyCustomViewActivity.newIntent(this))
+    }
+
     private fun setUpPresenter() {
-        mPresenter = ViewModelProviders.of(this).get(MainPresenterImpl::class.java)
+        mPresenter = ViewModelProvider(this)[MainPresenterImpl::class.java]
         mPresenter.initPresenter(this)
     }
 
@@ -79,6 +84,12 @@ class MainActivity : BaseActivity(), MainView {
         rvNews.adapter = mAdapter
 
         rvNews.setEmptyView(viewPodEmpty)
+    }
+
+    private fun setUpListener() {
+        btnNavigateToModifyCustomView.setOnClickListener() {
+            mPresenter.onTapFloatingButton()
+        }
     }
 
 /*

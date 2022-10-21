@@ -22,6 +22,10 @@ class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
         requestAllNews(lifeCycleOwner)
     }
 
+    override fun onTapFloatingButton() {
+        mView?.navigateToModifyCustomView()
+    }
+
     private fun requestAllNews(lifeCycleOwner: LifecycleOwner) {
         mView?.enableSwipeRefresh()
         mNewsModel.getAllNews(onError = {
