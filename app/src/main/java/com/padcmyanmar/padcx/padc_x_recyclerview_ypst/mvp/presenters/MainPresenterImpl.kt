@@ -54,4 +54,18 @@ class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
         Log.d("TAG", "onTapShare")
     }
 
+    /**
+     * EmptyViewPod.Delegate callback method
+     */
+    override fun onTapTryAgain() {
+        loadAllNewsFromAPI()
+    }
+
+    private fun loadAllNewsFromAPI() {
+        mNewsModel.getAllNewsFromApiAndSaveToDatabase(
+            onSuccess = {},
+            onError = {}
+        )
+    }
+
 }

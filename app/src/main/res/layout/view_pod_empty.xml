@@ -6,16 +6,26 @@
     <ImageView
         android:id="@+id/ivEmptyImage"
         android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_height="wrap_content"
-        android:src="@drawable/empty"/>
+        android:layout_centerInParent="true"
+        android:src="@drawable/empty" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvEmpty"
-        android:text="@string/em_no_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/ivEmptyImage"
         android:layout_centerHorizontal="true"
+        android:text="@string/em_no_news" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTryAgain"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEmpty"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/lbl_try_again" />
+
 
 </com.padcmyanmar.padcx.padc_x_recyclerview_ypst.veiws.viewpods.EmptyViewPod>

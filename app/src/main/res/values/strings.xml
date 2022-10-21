@@ -13,5 +13,6 @@
     <string name="lbl_like">Like</string>
     <string name="lbl_comment">Comment</string>
     <string name="lbl_share">Share</string>
+    <string name="lbl_try_again">Try Again</string>
 
 </resources>
