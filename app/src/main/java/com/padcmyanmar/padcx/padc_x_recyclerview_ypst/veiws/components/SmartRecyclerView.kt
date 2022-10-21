@@ -47,7 +47,7 @@ class SmartRecyclerView @JvmOverloads constructor(
 
         mEmptyView?.let {
             it.visibility = if (isEmpty) View.VISIBLE else View.INVISIBLE
-            visibility = if (isEmpty) View.VISIBLE else View.INVISIBLE
+            visibility = if (isEmpty) View.INVISIBLE else View.VISIBLE
         }
     }
 }
