@@ -19,6 +19,12 @@
             android:scaleType="centerCrop"
             app:cornerRadius="100dp"
             android:src="@drawable/news_sample" />
+        
+        <com.padcmyanmar.padcx.padc_x_recyclerview_ypst.veiws.components.PrefixCustomEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xxlarge"
+            android:inputType="number"/>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
