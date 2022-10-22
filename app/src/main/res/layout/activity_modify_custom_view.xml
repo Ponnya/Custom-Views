@@ -24,6 +24,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_xxlarge"
+            app:prefixText="+959"
+            android:text="23123"
+            app:prefixTextColor="@color/colorPrimary"
             android:inputType="number"/>
     </LinearLayout>
 
