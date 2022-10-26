@@ -132,29 +132,41 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
 
     private fun drawMouth(canvas: Canvas) {
 
-        /* 1
+        // 1 This will reset the path and remove any old path before drawing a new path.
+        mouthPath.reset()
+
+        /*
            the starting point of the path to (x0,y0) by using the moveTo()
            (22,70)
          */
         mouthPath.moveTo(size * 0.22f, size * 0.7f)
 
-        /* 2
-           draw a curved path from the starting point and through (x1,y1) that ends with (x2,y2)
-           (50,80) , (78,70)
-         */
-        mouthPath.quadTo(size * 0.50f, size * 0.80f, size * 0.78f, size * 0.70f)
+        if (happinessState == HAPPY) {
+            // 2
+            /*
+               draw a curved path from the starting point and through (x1,y1) that ends with (x2,y2)
+               (50,80) , (78,70)
+            */
+            mouthPath.quadTo(size * 0.50f, size * 0.80f, size * 0.78f, size * 0.70f)
 
-        /* 3
-           Draw a curved path starting from the last end point (x2,y2) and through (x3,y3) and that ends with (x0,y0)
-           (50,90) , (22,70)
-         */
-        mouthPath.quadTo(size * 0.50f, size * 0.90f, size * 0.22f, size * 0.70f)
+            /*
+               Draw a curved path starting from the last end point (x2,y2) and through (x3,y3) and that ends with (x0,y0)
+               (50,90) , (22,70)
+             */
+            mouthPath.quadTo(size * 0.50f, size * 0.90f, size * 0.22f, size * 0.70f)
 
-        // 4 set background color to mouthColor and fill that color
+        } else {
+
+            // 3
+            mouthPath.quadTo(size * 0.5f, size * 0.50f, size * 0.78f, size * 0.7f)
+            mouthPath.quadTo(size * 0.5f, size * 0.60f, size * 0.22f, size * 0.7f)
+        }
+
+
+        // set background color to mouthColor and fill that color
         paint.color = mouthColor
         paint.style = Paint.Style.FILL
 
-        // 5
         canvas.drawPath(mouthPath, paint)
     }
 
