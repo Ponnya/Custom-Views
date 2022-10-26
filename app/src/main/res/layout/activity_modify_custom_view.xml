@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.ModifyCustomViewActivity">
 
     <LinearLayout
@@ -17,17 +17,17 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
-            app:cornerRadius="100dp"
-            android:src="@drawable/news_sample" />
-        
+            android:src="@drawable/news_sample"
+            app:cornerRadius="100dp" />
+
         <com.padcmyanmar.padcx.padc_x_recyclerview_ypst.veiws.components.PrefixCustomEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_xxlarge"
-            app:prefixText="+959"
+            android:inputType="number"
             android:text="23123"
-            app:prefixTextColor="@color/colorPrimary"
-            android:inputType="number"/>
+            app:prefixText="+959"
+            app:prefixTextColor="@color/colorPrimary" />
 
         <include
             android:id="@+id/viewPodStateProgress"
@@ -44,29 +44,40 @@
 
             <Button
                 android:id="@+id/btn1"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:text="1" />
 
             <Button
                 android:id="@+id/btn2"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2" />
 
             <Button
                 android:id="@+id/btn3"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3" />
 
             <Button
                 android:id="@+id/btn4"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4" />
         </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnNavigate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/margin_medium"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_white_24dp" />
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
