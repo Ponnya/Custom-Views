@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.withStyledAttributes
 import com.padcmyanmar.padcx.padc_x_recyclerview_ypst.R
 import kotlin.math.cos
 import kotlin.math.min
@@ -15,6 +16,13 @@ private enum class FanSpeed(val label: Int) {
     LOW(R.string.fan_low),
     MEDIUM(R.string.fan_medium),
     HIGH(R.string.fan_high);
+
+    fun next() = when (this) {
+        OFF -> LOW
+        LOW -> MEDIUM
+        MEDIUM -> HIGH
+        HIGH -> OFF
+    }
 }
 
 private const val RADIUS_OFFSET_LABEL = 30      // position for label
@@ -26,6 +34,11 @@ private var fanSpeed = FanSpeed.OFF         // The active selection.
 
 // position variable which will be used to draw label and indicator circle position
 private val pointPosition: PointF = PointF(0.0f, 0.0f)
+
+// 4 initialize fan colors
+private var fanSpeedLowColor = Color.YELLOW
+private var fanSpeedMediumColor = Color.GREEN
+private var fanSpeedMaxColor = Color.RED
 
 class DialView @JvmOverloads constructor(
     context: Context,
@@ -43,7 +56,29 @@ class DialView @JvmOverloads constructor(
         typeface = Typeface.create("", Typeface.BOLD)
     }
 
-    // 1  to calculate the current radius of the dial's circle element
+    // 2
+    init {
+        isClickable = true
+
+        // 5
+        context.withStyledAttributes(attrs, R.styleable.DialView) {
+            fanSpeedLowColor = getColor(R.styleable.DialView_fanColor1, 0)
+            fanSpeedMediumColor = getColor(R.styleable.DialView_fanColor2, 0)
+            fanSpeedMaxColor = getColor(R.styleable.DialView_fanColor3, 0)
+        }
+    }
+
+    // 3
+    override fun performClick(): Boolean {
+        if (super.performClick()) return true
+
+        fanSpeed = fanSpeed.next()
+
+        invalidate()
+        return true
+    }
+
+    // to calculate the current radius of the dial's circle element
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         radius = (min(width, height) / 2.0 * 0.8).toFloat()
 
@@ -69,20 +104,22 @@ class DialView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        //3
         drawBackground(canvas)
 
-        //4
         drawIndicatorCircle(canvas)
 
-        //5
         drawTextLabels(canvas)
     }
 
     private fun drawBackground(canvas: Canvas) {
 
-        // Set dial background color to green if selection not off
-        paint.color = if (fanSpeed == FanSpeed.OFF) Color.GRAY else Color.GREEN
+        // 6 Set dial background color based on the selection.
+        paint.color = when (fanSpeed) {
+            FanSpeed.OFF -> Color.GRAY
+            FanSpeed.LOW -> fanSpeedLowColor
+            FanSpeed.MEDIUM -> fanSpeedMediumColor
+            FanSpeed.HIGH -> fanSpeedMaxColor
+        }
 
         // Draw the circle
         canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, paint)

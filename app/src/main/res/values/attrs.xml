@@ -20,4 +20,10 @@
             <enum name="sad" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="DialView">
+        <attr name="fanColor1" format="color" />
+        <attr name="fanColor2" format="color" />
+        <attr name="fanColor3" format="color" />
+    </declare-styleable>
 </resources>
