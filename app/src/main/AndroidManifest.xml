@@ -22,6 +22,8 @@
         <activity
             android:name=".activities.NewsDetailActivity"
             android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar"></activity>
+
+        <activity android:name=".activities.FanControlActivity"/>
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"

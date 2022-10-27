@@ -35,4 +35,13 @@
         app:eyesColor="@android:color/black"
         app:mouthColor="@android:color/black"
         app:state="sad" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnNavigate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_medium"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_white_24dp" />
 </RelativeLayout>
